@@ -198,7 +198,7 @@ ___________________ */
         .draw-Btn{
             left: 11em;
             z-index: 3;
-            background: url("/images/button-draw.png") no-repeat;
+            background: url("./images/button-draw.png") no-repeat;
             background-size: contain;
             background-position: center;
             padding: 1em;
@@ -448,7 +448,7 @@ ___________________ */
         transform: translate(-50%);
         z-index: 2;
         display:none;
-        background-image: url("/images/legs.png") ;
+        background-image: url("./images/legs.png") ;
         background-repeat: repeat-y;
         background-size: 180px;
         background-position: center;

@@ -308,11 +308,11 @@ function renderCharacter(){
     canvasMask = divMask
     divCanvas.innerHTML = `
         <div class="canvas-color"> </div>
-        <img class="renderd-img" alt="${characterObject.alt}" src="/images/drawing-components/${characterObject.headImage}">
-        <img class="renderd-img body" alt="${characterObject.alt}" src="/images/drawing-components/${characterObject.bodyImage}">
-        <img class="renderd-img" alt="${characterObject.alt}" src="/images/drawing-components/${characterObject.feetImage}">
-        <img class="renderd-background-img" alt="${characterObject.alt}" src="/images/drawing-components/${backgroundObject.backgroundImage}">
-        <img class="canvas-img" id="canvas-img" src="/images/canvas-noborder.png">
+        <img class="renderd-img" alt="${characterObject.alt}" src="./images/drawing-components/${characterObject.headImage}">
+        <img class="renderd-img body" alt="${characterObject.alt}" src="./images/drawing-components/${characterObject.bodyImage}">
+        <img class="renderd-img" alt="${characterObject.alt}" src="./images/drawing-components/${characterObject.feetImage}">
+        <img class="renderd-background-img" alt="${characterObject.alt}" src="./images/drawing-components/${backgroundObject.backgroundImage}">
+        <img class="canvas-img" id="canvas-img" src="./images/canvas-noborder.png">
         `
     canvas.style.transform = "translateX(-50%) translateY(-100%)"
 }    
@@ -342,20 +342,20 @@ function removePapper(){
 function eyesClose(){
     robotFace.innerHTML = `
     <div class="eye-wraper">
-        <img class="eye-img" src="/images/eye-close.png">
-        <img class="eye-img" src="/images/eye-close.png">
+        <img class="eye-img" src="./images/eye-close.png">
+        <img class="eye-img" src="./images/eye-close.png">
     </div>
-    <img class="galler-img galler-img-eye" src="/images/galler.png">
+    <img class="galler-img galler-img-eye" src="./images/galler.png">
     `
 }
 
 function eyesOpen(){
     robotFace.innerHTML = `
     <div class="eye-wraper">
-        <img class="eye-img" src="/images/eye.png">
-        <img class="eye-img" src="/images/eye.png">
+        <img class="eye-img" src="./images/eye.png">
+        <img class="eye-img" src="./images/eye.png">
     </div>
-    <img class="galler-img galler-img-eye" src="/images/galler.png">
+    <img class="galler-img galler-img-eye" src="./images/galler.png">
     `
 }
 
@@ -408,8 +408,8 @@ function mouthClose(){
 
 
 // setTimeout(()=>{
-//     aiEyeHtml.innerHTML = `<img src="/images/Eye.png">
-//     <img src="/images/Eye.png">`
+//     aiEyeHtml.innerHTML = `<img src="./images/Eye.png">
+//     <img src="./images/Eye.png">`
 // },1000)
 
 
