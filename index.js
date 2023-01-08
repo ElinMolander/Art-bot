@@ -1,8 +1,6 @@
 
 import { backgroundData,charactersData, robotComment } from '/data.js'
 
-
-
 const robotFace = document.getElementById("eyes-background-wraper")
 const startPopup = document.getElementById("start-popup")
 const speechBubbleText = document.getElementById("ai-text")
@@ -13,6 +11,7 @@ const aiText = document.getElementById("ai-text")
 const canvasContainer = document.getElementById("canvas-container")
 const drawInput = document.getElementById("draw-Input")
 const textline2 = document.getElementById("ai-text-line2")
+const shareBtn = document.getElementById("share-btn")
 let canvasMask = ""
 let canvas = ""
 let printed = false
@@ -21,7 +20,7 @@ let printed = false
 var matchingSertsh = false
 
 
-let aText = new Array("Welcome I'm art-bot","What do you whant me to draw?","Your wish is my comand")
+let aText = new Array("Welcome I'm Art-Bot", "What do you want me to draw?", "Your wish is my command")
 let iIndex = 0 
 let iArrLength = aText[0].length
 let iSpeed = 50
@@ -29,7 +28,7 @@ let iScrollAt = 20
 let iTextPos = 0 
 let sContents = ''
 let iRow
-// speechBubbleText.innerHTML=``
+
 
 
 // ADDEVENTLISTENERS
@@ -38,14 +37,30 @@ let iRow
 
 window.onload = function(){
     drawInput.focus()
-    const textToDisplay = ["Welcome I'm art-bot","What do you whant me to draw?","Your wish is my comand"]
+    const textToDisplay = ["Welcome I'm Art-Bot", "What do you want me to draw?", "Your wish is my command"]
     activateText(textToDisplay)
-    
-
-   
 }
 
-
+shareBtn.addEventListener("click", ()=>{
+    const textToDisplay =["I´m created by Elin Molander",
+    "www.elinmolander.com", "also half of:","www.beardybird.com"]
+   
+   
+    activateText(textToDisplay)
+    setTimeout(()=>{
+        aiText.innerHTML =`
+        <p>I´m created by Elin Molander</p>
+        <a class="link" id="link"href="http://elinmolander.com">www.elinmolander.com </a>
+        <p>also half of:</p>
+        <a class="link"id="link" href="https://beardybird.com/">www.beardybird.com</a>`
+        const link = document.getElementsByClassName("link")
+        
+        // link.style.transition = " color .3s easy-in"
+        // link.style.color = "#E796E5"
+    },6000)
+    
+    
+})
 
 function activateText(textToDisplay){
     // speechBubbleText.innerHTML = aText
@@ -58,7 +73,6 @@ function activateText(textToDisplay){
     sContents = ''
     iRow
     typeWriter()
-    
 }
 
 
@@ -85,23 +99,10 @@ function typeWriter(){
  }
 
 
-// startBtn.addEventListener("click", function(){
-//     startPopup.style.transition = "opacity 1s ease-out"
-//     startPopup.style.opacity = "0"
-//     eyesOpen()
-//     setTimeout(() => {
-//         startPopup.style.display= "none"
-//         eyesClose()
-//         aiTextContainer.style.display = "block"
-//         aiTextContainer.style.transition = "opacity 1s ease-out"
-//         aiTextContainer.style.opacity = "1"
-//         // aiText.innerHTML = "hello! I´m whating!!!"
-//         // activateText()
-//         typeWriter();
-//     }, 1500); 
-// })
 
-drawBtn.addEventListener("click", function(){
+drawBtn.addEventListener("click", function(e){
+    e.preventDefault()
+    console.log("prevent from default")
     if(!printed){
         renderCharacter()
         printPapper()
@@ -120,18 +121,19 @@ drawBtn.addEventListener("click", function(){
 
 
 document.getElementById("input-section").addEventListener("focus", function(e){
-    console.log("focus")
+    
     eyesOpen()
 }, true) 
 
 document.getElementById("input-section").addEventListener("blur", function(e){
-    console.log("blur")
+    
     eyesClose()
 }, true) 
 
 
 function getMatchingBackgroundArray(){
-    const valueInputArray = drawInput.value.split(" ")
+    let valueInputArray = drawInput.value.toLowerCase().split(" ")
+    console.log(valueInputArray)
     var matchingBackgroundArray =[]
     for (let i =0; i < valueInputArray.length;i++){
         const matchingBackground = backgroundData.filter(function(background){
@@ -146,7 +148,7 @@ function getMatchingBackgroundArray(){
 
 
 function getMatchingCharactersArray(){
-    const valueInputArray = drawInput.value.split(" ")
+    const valueInputArray = drawInput.value.toLowerCase().split(" ")
     var matchingCharactersArray = []
     for (let i = 0; i < valueInputArray.length; i++){
         const matchingCharacter = charactersData.filter(function(character){
@@ -268,8 +270,8 @@ function renderAiText(data){
 if (matchingSertsh){
     setTimeout(()=>{
         // aiText.classList.add("ai-text-animation")
-        const textToDisplay = [`You wanted me to draw ${valueInputArray},
-        and here it is ${aiComentObject.robotCommentIfMatch}`]
+        const textToDisplay = [`You wanted me to draw <span>${valueInputArray}</span>,
+        and here it is! ${aiComentObject.robotCommentIfMatch}`]
         activateText(textToDisplay)
         matchingSertsh = false
 
@@ -277,17 +279,12 @@ if (matchingSertsh){
 } else{
     setTimeout(()=>{
         // aiText.classList.add("ai-text-animation")
-        const textToDisplay = [`You wanted me to draw ${valueInputArray},
+        const textToDisplay = [`You wanted me to draw <span> ${valueInputArray}</span>,
         ${robotCommentText}`]
         activateText(textToDisplay)
     },500)
 
-}
-    
-   
-
-   
-   
+  }
 }
 
 function renderCharacter(){
@@ -330,6 +327,7 @@ function printPapper(){
 }
 
 function removePapper(){
+    mouthClose()
     canvasMask.style.transition = " transform 1s ease-out"
     canvasMask.style.transform = "translateX(-50%) translateY(800px) rotate(360deg) scale(.5)"
     setTimeout(()=>{
@@ -373,23 +371,40 @@ function mouthOpen(){
 
 }
 
-const shareData = {
-    title: "art-bot",
-    text: "Draws arty images from your wishes",
-    url: "https://www.elinmolander.com"
-}
+function mouthClose(){
+    const mouthUnder = document.getElementById("mouth-under-wraper")
+    const mouthUnderBackground = document.getElementById("mouth-under-background")
+    mouthUnder.style.transition = "top .3s ease-in"
+    mouthUnder.style.top ="1px"
+    mouthUnderBackground.style.transition = "height .3s  ease-in,top .3s  ease-in "
+  
+    mouthUnderBackground.style.height = "0.4em"
+    mouthUnderBackground.style.top= "3em"
 
-const sharebtn = document.querySelector(".share-btn")
-const resultParagraph = document.querySelector(".result")
+} 
 
-sharebtn.addEventListener("click", async()=>{
-    try{
-        await navigator.share(shareData)
-        resultParagraph.textContent = "art-bot shared successfully"
-    } catch (err){
-        resultParagraph.textContent = ` Error: ${err}`
-    }
-})
+
+
+
+// const shareData = {
+//     title: "art-bot",
+//     text: "Draws arty images from your wishes",
+//     url: "https://www.elinmolander.com"
+// }
+
+
+// const resultParagraph = document.querySelector(".result")
+
+
+
+// sharebtn.addEventListener("click", async()=>{
+//     try{
+//         await navigator.share(shareData)
+//         resultParagraph.textContent = "art-bot shared successfully"
+//     } catch (err){
+//         resultParagraph.textContent = ` Error: ${err}`
+//     }
+// })
 
 
 // setTimeout(()=>{

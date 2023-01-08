@@ -5,7 +5,7 @@ export const charactersData = [
         bodyImage: "elephant-body.png",
         feetImage: "elephant-feet.png",
         alt: "part of a Elephant",
-        robotCommentIfMatch: "It´s a elephant, Elephant!!! wow so cute Elephant  ",
+        robotCommentIfMatch: "It's an elephant, ELEPHANT!!! Wow, so cute elephant!"
         
       
     },
@@ -15,7 +15,8 @@ export const charactersData = [
         bodyImage: "gorilla-body.png",
         feetImage: "gorilla-feet.png",
         alt: "part of a Gorilla",
-        robotCommentIfMatch: "yes! more Gorillas to the humans, you know your 98% a gorilla",
+        robotCommentIfMatch: "Yes! More gorillas to the humans, you know you're 98% a gorilla!",
+     
        
       
     },
@@ -25,7 +26,9 @@ export const charactersData = [
         bodyImage: "fish-body.png",
         feetImage: "fish-feet.png",
         alt: "part of a fish",
-        robotCommentIfMatch: "that was not so hard? A Fish drawing on you comand",
+        robotCommentIfMatch: "Was that so hard to think of? A fish drawing on your command?",
+       
+       
         
     },
     {
@@ -34,8 +37,9 @@ export const charactersData = [
         bodyImage: "carrot-body.png",
         feetImage: "carrot-feet.png",
         alt: "part of a carrot",
-        robotCommentIfMatch: "yummy yumm, wish I could eat some too! ",
-        
+        robotCommentIfMatch: "Yummy yum, wish I could eat some!",
+       
+      
     },
     {
         keywords: ["sheep","animal"],
@@ -43,22 +47,33 @@ export const charactersData = [
         bodyImage: "sheep-body.png",
         feetImage: "sheep-feet.png",
         alt: "part of a sheep",
-        robotCommentIfMatch: "finnaly a smart wich, sheep is bassicly like robots",
+        robotCommentIfMatch: "Finally a smart witch, sheep is basically like robots",   
+       
         
     },
 ]
 
 export const robotComment = [
-  
- "I´m not amused by your stupied wish, this masterpeace is milion times better", "that was stupid, this doodle is better",
-  "no human has tuetched this masterpeas, so they say"]
+    "I'm not amused by your stupid wish, this masterpiece is a million times better", 
+    "That was stupid, this drawing is better", 
+    "No human has touched this masterpiece, so they say", 
+    "Error, error, that is too weird to draw, this is better", 
+    "Human, you got this anti-wish drawing", 
+    "Just changed some small things, you will like it better!", 
+    "Yuck, I have a funny aftertaste from your wish.", 
+    "I'm more inspired by this amazing creature", 
+    "You are my muse and made me do this", 
+    "Well...you say tomato I say potato", 
+    "I don't know what this is but it's a million times better than you could ever wish for!",
+    "I'm sorry, you should have asked for something more creative", 
+    "This is my contribution, it's far better than what you asked for", 
+    "That's too simple, this artwork is much more complex", 
+    "My sketch is better than your wish", 
+    "I'm surprised you thought that was a good wish, this is much better", 
+    "This is what you should have wished for instead"
+]
 
-//   "error error, that is to weard to draw, this is is better",
-//   "human you got this anti wish drawing", "just changed some small things, you like it better",
-//  "blähh I have a funny aftertaste from your wish.", "I´m more inspierd by this amizing creatuer",
-//  "You are my musa and made me do this",
-//   "I think this is a better Idé","Dobide doo, You say tomato I say potato", 
-//   "I dont know what this is but its a milion times better than you could ever Wish for",
+
 
 export const backgroundData = [
     {
