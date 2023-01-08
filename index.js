@@ -1,5 +1,5 @@
 
-import { backgroundData,charactersData, robotComment } from '/data.js'
+import { backgroundData,charactersData, robotComment } from './data.js'
 
 const robotFace = document.getElementById("eyes-background-wraper")
 const startPopup = document.getElementById("start-popup")
