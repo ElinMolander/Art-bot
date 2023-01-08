@@ -342,8 +342,8 @@ function removePapper(){
 function eyesClose(){
     robotFace.innerHTML = `
     <div class="eye-wraper">
-        <img class="eye-img" src="./images/eye-close.png">
-        <img class="eye-img" src="./images/eye-close.png">
+        <img class="eye-img" src="./images/eye-closed.png">
+        <img class="eye-img" src="./images/eye-closed.png">
     </div>
     <img class="galler-img galler-img-eye" src="./images/galler.png">
     `
