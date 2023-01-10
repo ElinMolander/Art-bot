@@ -2,16 +2,19 @@
 import { backgroundData,charactersData, robotComment } from './data.js'
 
 const robotFace = document.getElementById("eyes-background-wraper")
-const startPopup = document.getElementById("start-popup")
+// const startPopup = document.getElementById("start-popup")
 const speechBubbleText = document.getElementById("ai-text")
-const startBtn = document.getElementById("start-Btn")
+// const startBtn = document.getElementById("start-Btn")
 const drawBtn = document.getElementById("draw-Btn")
 const aiTextContainer = document.getElementById("ai-text-container")
 const aiText = document.getElementById("ai-text")
 const canvasContainer = document.getElementById("canvas-container")
 const drawInput = document.getElementById("draw-Input")
-const textline2 = document.getElementById("ai-text-line2")
+// const textline2 = document.getElementById("ai-text-line2")
 const shareBtn = document.getElementById("share-btn")
+const form = document.getElementById("formId")
+const inputSection = document.getElementById("input-section")
+
 let canvasMask = ""
 let canvas = ""
 let printed = false
@@ -34,18 +37,43 @@ let iRow
 // ADDEVENTLISTENERS
 
 
+// const timeOut = setTimeout
+
+// timeout = setTimeout(()=>{
+//     console.log("i´m tierd")
+// },8000)
+
+setTimer()
+
+function setTimer(){
+    window.setTimeout(()=>{
+        eyesClose()
+        const textToDisplay = ["I´m waiting for your wish to get me inspired",
+         "What do you want me to draw?", "Your wish is my command"]
+        activateText(textToDisplay)
+        
+    },9000)
+}
+
+window.addEventListener("keydown",function(){
+    console.log("key press")
+    window.clearTimeout()
+    setTimer()
+})
 
 window.onload = function(){
     drawInput.focus()
     const textToDisplay = ["Welcome I'm Art-Bot", "What do you want me to draw?", "Your wish is my command"]
     activateText(textToDisplay)
+    
+    
 }
+
+
 
 shareBtn.addEventListener("click", ()=>{
     const textToDisplay =["I´m created by Elin Molander",
     "www.elinmolander.com", "also half of:","www.beardybird.com"]
-   
-   
     activateText(textToDisplay)
     setTimeout(()=>{
         aiText.innerHTML =`
@@ -53,17 +81,12 @@ shareBtn.addEventListener("click", ()=>{
         <a class="link" id="link"href="http://elinmolander.com">www.elinmolander.com </a>
         <p>also half of:</p>
         <a class="link"id="link" href="https://beardybird.com/">www.beardybird.com</a>`
-        const link = document.getElementsByClassName("link")
-        
-        // link.style.transition = " color .3s easy-in"
-        // link.style.color = "#E796E5"
     },6000)
     
     
 })
 
 function activateText(textToDisplay){
-    // speechBubbleText.innerHTML = aText
     aText = textToDisplay
     iIndex = 0 
     iArrLength = aText[0].length
@@ -79,9 +102,12 @@ function activateText(textToDisplay){
 
 
 function typeWriter(){
+    if(undefined){
+        console.log("undefined")
+    }
+   
     sContents= ' '
     iRow = Math.max(0, iIndex-iScrollAt)
-   
     while (iRow < iIndex){
         sContents += aText[iRow++] + '<br />'
     }
@@ -98,42 +124,60 @@ function typeWriter(){
         }
  }
 
+ let valueInput = ""
 
-
-drawBtn.addEventListener("click", function(e){
+form.addEventListener("submit", function(e){
     e.preventDefault()
-    console.log("prevent from default")
+    if (drawInput.value.length < 1){
+        const textToDisplay = ["That is an empty wish...",
+        " Please write something looooooooonger",
+        "Your wish is my command!"]
+        activateText(textToDisplay)
+        console.log( ` test${drawInput.value}`)
+        return
+    }
+    if (drawInput.value === valueInput){
+        const textToDisplay = ["Use your imagination human!",
+         "write something unique, no pressure.",
+        "Your wish is my command"]
+        activateText(textToDisplay)
+        return
+    }
+        
     if(!printed){
+        valueInput = drawInput.value
         renderCharacter()
         printPapper()
         printed = true
     } else {
+        
         removePapper()
         setTimeout(()=>{
             renderCharacter()
             printPapper()
-           
+            valueInput = drawInput.value
         },1500)
+
+       
     }
 })
 
 
 
-
-document.getElementById("input-section").addEventListener("focus", function(e){
-    
+inputSection.addEventListener("focus", function(e){
     eyesOpen()
 }, true) 
 
-document.getElementById("input-section").addEventListener("blur", function(e){
-    
+inputSection.addEventListener("blur", function(e){
     eyesClose()
 }, true) 
 
 
+
+
 function getMatchingBackgroundArray(){
     let valueInputArray = drawInput.value.toLowerCase().split(" ")
-    console.log(valueInputArray)
+    
     var matchingBackgroundArray =[]
     for (let i =0; i < valueInputArray.length;i++){
         const matchingBackground = backgroundData.filter(function(background){
