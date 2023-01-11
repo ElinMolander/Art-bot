@@ -15,6 +15,9 @@ const shareBtn = document.getElementById("share-btn")
 const form = document.getElementById("formId")
 const inputSection = document.getElementById("input-section")
 
+const robotGetsTierdOnloadDelay = 30000
+const robotGetsTierdDelay = 40000
+const robotBlinkDelay = 300
 let canvasMask = ""
 let canvas = ""
 let printed = false
@@ -23,7 +26,8 @@ let printed = false
 var matchingSertsh = false
 
 
-let aText = new Array("Welcome I'm Art-Bot", "What do you want me to draw?", "Your wish is my command")
+
+let aText = new Array("Welcome, I'm Art-Bot", "What do you want me to draw?", "Your wish is my command")
 let iIndex = 0 
 let iArrLength = aText[0].length
 let iSpeed = 50
@@ -43,29 +47,36 @@ let iRow
 //     console.log("i´m tierd")
 // },8000)
 
-setTimer()
+let robotGetsTiredTimer = ""
 
-function setTimer(){
-    window.setTimeout(()=>{
+function robotGetsTired(delay){
+    clearTimeout(robotGetsTiredTimer)
+    robotGetsTiredTimer = setTimeout(()=>{
         eyesClose()
         const textToDisplay = ["I´m waiting for your wish to get me inspired",
          "What do you want me to draw?", "Your wish is my command"]
         activateText(textToDisplay)
         
-    },9000)
+    },delay)
 }
 
-window.addEventListener("keydown",function(){
-    console.log("key press")
-    window.clearTimeout()
-    setTimer()
+let robotBlinkTimer = ""
+
+inputSection.addEventListener("keydown",function(delay){
+    robotGetsTired(robotGetsTierdDelay)
+    clearTimeout(robotBlinkTimer) 
+    eyesClose()
+    robotBlinkTimer = setTimeout(()=>{
+        eyesOpen()
+    },robotBlinkDelay)
+    
 })
 
 window.onload = function(){
     drawInput.focus()
-    const textToDisplay = ["Welcome I'm Art-Bot", "What do you want me to draw?", "Your wish is my command"]
+    const textToDisplay = ["Welcome, I'm Art-Bot", "What do you want me to draw?", "Your wish is my command"]
     activateText(textToDisplay)
-    
+    robotGetsTired(robotGetsTierdOnloadDelay)
     
 }
 
@@ -128,6 +139,7 @@ function typeWriter(){
 
 form.addEventListener("submit", function(e){
     e.preventDefault()
+    robotGetsTired(robotGetsTierdDelay)
     if (drawInput.value.length < 1){
         const textToDisplay = ["That is an empty wish...",
         " Please write something looooooooonger",
