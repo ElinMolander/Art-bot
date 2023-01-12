@@ -2,15 +2,12 @@
 import { backgroundData,charactersData, robotComment } from './data.js'
 
 const robotFace = document.getElementById("eyes-background-wraper")
-// const startPopup = document.getElementById("start-popup")
 const speechBubbleText = document.getElementById("ai-text")
-// const startBtn = document.getElementById("start-Btn")
 const drawBtn = document.getElementById("draw-Btn")
 const aiTextContainer = document.getElementById("ai-text-container")
 const aiText = document.getElementById("ai-text")
 const canvasContainer = document.getElementById("canvas-container")
 const drawInput = document.getElementById("draw-Input")
-// const textline2 = document.getElementById("ai-text-line2")
 const shareBtn = document.getElementById("share-btn")
 const form = document.getElementById("formId")
 const inputSection = document.getElementById("input-section")
@@ -40,12 +37,20 @@ let iRow
 
 // ADDEVENTLISTENERS
 
+// Fisher–Yates shuffle
 
-// const timeOut = setTimeout
+function shuffleArray(array){
+    var m = array.length, t, i
+    while (m != 0){
+        i = Math.floor(Math.random() * m--)
+        t = array[m] 
+        array[m] = array[i]
+        array[i] = t
+    }
+    return array
+}
 
-// timeout = setTimeout(()=>{
-//     console.log("i´m tierd")
-// },8000)
+
 
 let robotGetsTiredTimer = ""
 
@@ -77,6 +82,9 @@ window.onload = function(){
     const textToDisplay = ["Welcome, I'm Art-Bot", "What do you want me to draw?", "Your wish is my command"]
     activateText(textToDisplay)
     robotGetsTired(robotGetsTierdOnloadDelay)
+    shuffleArray(robotComment)
+
+console.log(robotComment)   
     
 }
 

@@ -47,7 +47,7 @@ export const charactersData = [
         bodyImage: "sheep-body.png",
         feetImage: "sheep-feet.png",
         alt: "part of a sheep",
-        robotCommentIfMatch: "Finally a smart witch, sheep is basically like robots",   
+        robotCommentIfMatch: "Finally a smart which, sheep is basically like robots",   
        
         
     },
