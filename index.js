@@ -1,5 +1,5 @@
 
-import { backgroundData,charactersData, robotComment } from './data.js'
+import { backgroundData,charactersData, robotComment, backgroundColors } from './data.js'
 
 const robotFace = document.getElementById("eyes-background-wraper")
 const speechBubbleText = document.getElementById("ai-text")
@@ -263,7 +263,7 @@ function getRandomBackground(data){
 }
 var counter =  0
 function getRandomCharacter(data){
-   
+    
     var newHeadImage = data.map(getHeadImage)
     var newbodyImage = data.map(getbodyImage)
     var newfeetImage = data.map(getfeetImage)
@@ -319,6 +319,13 @@ function getrandomNumber(data){
     
 }
 
+function getRandomColornumber(data){
+   var newColor = getNextIndexNummber(data)
+   return newColor
+
+}
+
+
 function renderAiText(data){
     var newrobotComment = robotComment
     var aiComentObject = getSingelCaracter()
@@ -354,8 +361,9 @@ if (matchingSertsh){
 function renderCharacter(){
     const characterObject = getSingelCaracter()
     const backgroundObject = getSingelBackground()
+    const color = getRandomColornumber(backgroundColors)
     renderAiText()
-    console.log(backgroundObject)
+    console.log(color)
 
     var divMask = document.createElement("div")
     divMask.id = "canvas-mask"
@@ -371,7 +379,7 @@ function renderCharacter(){
     canvas = divCanvas
     canvasMask = divMask
     divCanvas.innerHTML = `
-        <div class="canvas-color"> </div>
+        <div class="canvas-color" style="background-color:${color}"> </div>
         <img class="renderd-img" alt="${characterObject.alt}" src="./images/drawing-components/${characterObject.headImage}">
         <img class="renderd-img body" alt="${characterObject.alt}" src="./images/drawing-components/${characterObject.bodyImage}">
         <img class="renderd-img" alt="${characterObject.alt}" src="./images/drawing-components/${characterObject.feetImage}">

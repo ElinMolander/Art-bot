@@ -65,7 +65,7 @@ export const robotComment = [
     "You are my muse and made me do this", 
     "Well...you say tomato I say potato", 
     "I don't know what this is but it's a million times better than you could ever wish for!",
-    "I'm sorry, you should have asked for something more creative", 
+    "I'm sorry, you should have asked for something more creative like this.", 
     "This is my contribution, it's far better than what you asked for", 
     "That's too simple, this artwork is much more complex", 
     "My sketch is better than your wish", 
@@ -90,3 +90,7 @@ export const backgroundData = [
     },
 ]
 
+
+export const backgroundColors = [
+    "#52C1FF","#52c1ff","#f3b1d5","#fffce2","#c1ffa2"
+]
