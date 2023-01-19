@@ -92,5 +92,5 @@ export const backgroundData = [
 
 
 export const backgroundColors = [
-    "#52C1FF","#52c1ff","#f3b1d5","#fffce2","#c1ffa2"
+    "#52C1FF","#52c1ff","#f3b1d5","#f3f1df","#c1ffa2"
 ]

@@ -2,27 +2,21 @@
 import { backgroundData,charactersData, robotComment, backgroundColors } from './data.js'
 
 const robotFace = document.getElementById("eyes-background-wraper")
-const speechBubbleText = document.getElementById("ai-text")
-const drawBtn = document.getElementById("draw-Btn")
-const aiTextContainer = document.getElementById("ai-text-container")
-const aiText = document.getElementById("ai-text")
+const speechBubbleText = document.getElementById("robot-text")
+const aiTextContainer = document.getElementById("robot-text-container")
+const aiText = document.getElementById("robot-text")
 const canvasContainer = document.getElementById("canvas-container")
 const drawInput = document.getElementById("draw-Input")
-const shareBtn = document.getElementById("share-btn")
+const aboutBtn = document.getElementById("about-btn")
 const form = document.getElementById("formId")
 const inputSection = document.getElementById("input-section")
-
 const robotGetsTierdOnloadDelay = 30000
 const robotGetsTierdDelay = 40000
 const robotBlinkDelay = 300
 let canvasMask = ""
 let canvas = ""
 let printed = false
-
-
-var matchingSertsh = false
-
-
+var matchingSearch = false
 
 let aText = new Array("Welcome, I'm Art-Bot", "What do you want me to draw?", "Your wish is my command")
 let iIndex = 0 
@@ -90,7 +84,7 @@ console.log(robotComment)
 
 
 
-shareBtn.addEventListener("click", ()=>{
+aboutBtn.addEventListener("click", ()=>{
     const textToDisplay =["I´m created by Elin Molander",
     "www.elinmolander.com", "also half of:","www.beardybird.com"]
     activateText(textToDisplay)
@@ -230,11 +224,11 @@ function getSingelCaracter(){
     const characterArray = getMatchingCharactersArray()
     
     if(characterArray.length > 0){
-        matchingSertsh = true
+        matchingSearch = true
        return getRandomCharacter(characterArray) 
     }
     else {
-        matchingSertsh = false
+        matchingSearch = false
        return getRandomCharacter(charactersData)
     }
 }
@@ -338,13 +332,13 @@ function renderAiText(data){
         aiTextContainer.style.transition = "opacity 1s ease-out"
         aiTextContainer.style.opacity = "1"
     },500)
-if (matchingSertsh){
+if (matchingSearch){
     setTimeout(()=>{
         // aiText.classList.add("ai-text-animation")
         const textToDisplay = [`You wanted me to draw <span>${valueInputArray}</span>,
         and here it is! ${aiComentObject.robotCommentIfMatch}`]
         activateText(textToDisplay)
-        matchingSertsh = false
+        matchingSearch = false
 
     },500)
 } else{
@@ -458,7 +452,7 @@ function mouthClose(){
 
 
 
-// const shareData = {
+// const aboutData = {
 //     title: "art-bot",
 //     text: "Draws arty images from your wishes",
 //     url: "https://www.elinmolander.com"
@@ -469,10 +463,10 @@ function mouthClose(){
 
 
 
-// sharebtn.addEventListener("click", async()=>{
+// aboutbtn.addEventListener("click", async()=>{
 //     try{
-//         await navigator.share(shareData)
-//         resultParagraph.textContent = "art-bot shared successfully"
+//         await navigator.about(aboutData)
+//         resultParagraph.textContent = "art-bot aboutd successfully"
 //     } catch (err){
 //         resultParagraph.textContent = ` Error: ${err}`
 //     }

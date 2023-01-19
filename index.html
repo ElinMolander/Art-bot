@@ -9,120 +9,68 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
-
-
-    
 </head>
 <body>
-  
     <main>
-        <!-- <p class="art-bot-text"> Art-bot </p> -->
         <div id="input-section-container" class="input-section-container">
             <form id="formId">
                  <div id="input-section" class="input-section">
                     <label for="draw-Input"></label>
                     <input id="draw-Input" class="draw-Input" name="draw-Input"
                     type="text" placeholder="Type something"> 
-                    <!-- <img class="input-img" src="./images/input.png"> -->
                     <button class="draw-Btn" id="draw-Btn"> DRAW </button>
                 </div>
-                <!-- <img class="galler-img galler-img-draw" src="./images/galler.png"> -->
             </form>
         </div>
-        
-        <div class="ai-text-container" id="ai-text-container">
+        <div class="robot-text-container" id="robot-text-container">
             <button class="ai-text-btn"></button>
-            <div class="ai-text" id="ai-text"></div>
+            <div class="robot-text" id="robot-text"></div>
         </div>
-        <div class="ai-text-background">
+        <div class="speak-bubble-background">
             <img class="mutter-img mutter-bottom-left" src="./images/mutter.png">
             <img class="display-img" id="display-img" src="./images/display.png">
             <img class="mutter-img mutter-bottom-right" src="./images/mutter.png">
         </div>
 
-    
-
-     
         <div id="eyes-section" class="eyes-section">
-            
             <img class="screw-img" src="./images/mutter.png">
             <div class="eyes-background-wraper" id="eyes-background-wraper">
                 <div class="eye-wraper">
                     <img class="eye-img" src="./images/eye-closed.png">
                     <img class="eye-img" src="./images/eye-closed.png">
                 </div>
-               
-                <img class="galler-img galler-img-eye" src="./images/galler.png">
+               <img class="galler-img galler-img-eye" src="./images/galler.png">
             </div>
             <img class="screw-img" src="./images/mutter.png">
         </div>
-       
-   
         <div id="canvas-section" class="canvas-section">
             <div class="mouth-wraper" id="mouth-wraper"> 
                 <img class="mouth-over" id="mouth-over" src="./images/mouth-over.png">
-                <div class="canvas-container" id="canvas-container">
-                   
-                </div>
+                <div class="canvas-container" id="canvas-container"></div>
                <div class="mouth-under-wraper" id="mouth-under-wraper" >
-                   
                    <img class="mouth-under"  src="./images/mouth-under.png">
-                   <img  class="mouth-under background" id="mouth-under-background" src="./images/gap-mouth.png">
+                   <img  class="mouth-under mouth-background" id="mouth-under-background" src="./images/gap-mouth.png">
                </div>
-                
-                <!-- <img class="mouth-background" id="mouth-background" src="./images/gap-mouth.png"> -->
                 <div class="robot-peaces">
-                    <!-- <img class="arm left-arm" src="images/1x/hand.png"> -->
-                   
-                    
-                   
                     <img class="stomac-img" src="./images/stomac.png" alt="#">
-                   
                     <img class="body-img" src="./images/body.png" alt="#">
                     <div class="legs" ></div>
-                    <!-- <img class="arm right-arm" src="images/1x/hand.png"> -->
-                    <!-- <img class="galler-canvas-img" src="./images/galler-blue.png"> -->
                 </div>
-               
-      
             </div>
         </div>
-
-     
-
-       
-       <div id="background-img-section">
-          
-           <!-- <img class="btn" id= "heart-img" src="./images/heart.png">
-           <div id="lever">
-                <img class="lever-base-img" src="./images/lever-base.png">
-                <img class="lever-handle-img" src="./images/lever-handle.png">
-           </div>
-            -->
+        <div id="background-img-section">
             <img class="papper" src="./images/background-front.png" alt="#">
-            <img class="back" src="./images/background-back.png" alt="#">
-            
-          
+            <img class="papper-back" src="./images/background-back.png" alt="#">
             <img class="background-height" src="./images/bakgrund-height.png" alt="#">
-          
         </div>
-
-        <img class="textur" src="./images/textur-1.png">
-
-        <div id="share-btn-section">
-            <div id="share-section" class="share-section">
-                
-                    <button type="button" class="btn share-btn" id="share-btn"> About</button>
-                    <p class="result"></p>
+        <!-- <img class="textur" src="./images/textur-1.png"> -->
+        <div id="about-btn-section">
+            <div id="about-section" class="about-section">
+                <button type="button" class="btn about-btn" id="about-btn"> About</button>
+                <p class="result"></p>
             </div>
-            
         </div>
-      
     </main>
-   
-    <!-- <footer> made by Elin Molander 2022</footer> -->
-   
-    <!-- <div id="notificationBar"></div> -->
-<script src="index.js" type="module"></script>
+    <script src="index.js" type="module"></script>
 </body>
 </html>
