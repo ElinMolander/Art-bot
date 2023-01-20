@@ -16,23 +16,163 @@ const robotBlinkDelay = 300
 let canvasMask = ""
 let canvas = ""
 let printed = false
-var matchingSearch = false
+let matchingSearch = false
+let robotGetsTiredTimer = ""
+let robotBlinkTimer = ""
+let valueInput = ""
+let counter =  0
+// Variables to the typewriter function
+let originalPrintText = new Array("Welcome, I'm Art-Bot", "What do you want me to draw?", "Your wish is my command")
+let printingRow = 0 
+let rowLength = originalPrintText[0].length
+let printSpeed = 50
+let scrollAtPrintedRowIndex = 20 
+let positionInRow = 0 
+let printedContent = ''
+let typeWriterTimer
 
-let aText = new Array("Welcome, I'm Art-Bot", "What do you want me to draw?", "Your wish is my command")
-let iIndex = 0 
-let iArrLength = aText[0].length
-let iSpeed = 50
-let iScrollAt = 20 
-let iTextPos = 0 
-let sContents = ''
-let iRow
 
+// ONLOAD
 
+window.onload = function(){
+    drawInput.focus()
+    const textToDisplay = ["Welcome, I'm Art-Bot", "What do you want me to draw?", "Your wish is my command"]
+    activateText(textToDisplay)
+    robotGetsTired(robotGetsTierdOnloadDelay)
+    shuffleArray(robotComment)
+}
 
 // ADDEVENTLISTENERS
 
-// Fisher–Yates shuffle
+inputSection.addEventListener("keydown",function(delay){
+    robotGetsTired(robotGetsTierdDelay)
+    clearTimeout(robotBlinkTimer) 
+    eyesClose()
+    robotBlinkTimer = setTimeout(()=>{
+        eyesOpen()
+    },robotBlinkDelay)
+})
 
+aboutBtn.addEventListener("click", ()=>{
+    const textToDisplay =["I´m created by Elin Molander",
+    "www.elinmolander.com", "also half of:","www.beardybird.com"]
+    activateText(textToDisplay)
+    setTimeout(()=>{
+        aiText.innerHTML =`
+        <p>I´m created by Elin Molander</p>
+        <a class="link" id="link"href="http://elinmolander.com">www.elinmolander.com </a>
+        <p>also half of:</p>
+        <a class="link"id="link" href="https://beardybird.com/">www.beardybird.com</a>`
+    },6000)
+})
+
+form.addEventListener("submit", function(e){
+    e.preventDefault()
+    robotGetsTired(robotGetsTierdDelay)
+    if (drawInput.value.length < 1){
+        const textToDisplay = ["That is an empty wish...",
+        " Please write something looooooooonger",
+        "Your wish is my command!"]
+        activateText(textToDisplay)
+        return
+    }
+    if (drawInput.value === valueInput){
+        const textToDisplay = ["Use your imagination human!",
+         "write something unique, no pressure.",
+        "Your wish is my command"]
+        activateText(textToDisplay)
+        return
+    }
+    if(!printed){
+        valueInput = drawInput.value
+        renderCharacter()
+        printPapper()
+        printed = true
+    } else {
+        removePapper()
+        setTimeout(()=>{
+            renderCharacter()
+            printPapper()
+            valueInput = drawInput.value
+        },1500)
+    }
+})
+
+inputSection.addEventListener("focus", function(e){
+    eyesOpen()
+}, true) 
+
+inputSection.addEventListener("blur", function(e){
+    eyesClose()
+}, true) 
+
+function robotGetsTired(delay){
+    clearTimeout(robotGetsTiredTimer)
+    robotGetsTiredTimer = setTimeout(()=>{
+        eyesClose()
+        const textToDisplay = ["I´m waiting for your wish to get me inspired",
+         "What do you want me to draw?", "Your wish is my command"]
+        activateText(textToDisplay)
+    },delay)
+}
+
+
+// TYPEWRITER FUNCTIONS
+
+function activateText(textToDisplay){
+    originalPrintText = textToDisplay
+    printingRow = 0 
+    rowLength = originalPrintText[0].length
+    printSpeed = 50
+    scrollAtPrintedRowIndex = 4
+    positionInRow = 0
+    printedContent = ''
+    clearTimeout(typeWriterTimer)
+    typeWriter()
+}
+
+function typeWriter(){
+    printedContent= ' '
+    let iRow = Math.max(0, printingRow-scrollAtPrintedRowIndex)
+    while (iRow < printingRow){
+        printedContent += originalPrintText[iRow++] + '<br />'
+    }
+
+    positionInRow++    
+    speechBubbleText.innerHTML = printedContent + originalPrintText[printingRow].substring(0,positionInRow)+ "_"
+        if (positionInRow === rowLength){
+            printingRow++
+            positionInRow = 0
+            if(printingRow !== originalPrintText.length){
+                rowLength = originalPrintText[printingRow].length
+                typeWriterTimer = setTimeout(typeWriter,500)
+            }
+        } else {
+            typeWriterTimer = setTimeout(typeWriter,printSpeed)
+        }
+ }
+
+// HELPERS
+
+function getNextIndexNummber(data){
+    counter += 1
+    if ( counter >= data.length){
+        counter = 0
+    } 
+   return data[counter]
+}
+
+function getrandomNumber(data){
+    const randomNumber = Math.floor (Math.random()* data.length)
+    return data[randomNumber]
+}
+
+function getRandomColornumber(data){
+   var newColor = getNextIndexNummber(data)
+   return newColor
+}
+
+// Fisher–Yates shuffle
 function shuffleArray(array){
     var m = array.length, t, i
     while (m != 0){
@@ -46,153 +186,12 @@ function shuffleArray(array){
 
 
 
-let robotGetsTiredTimer = ""
 
-function robotGetsTired(delay){
-    clearTimeout(robotGetsTiredTimer)
-    robotGetsTiredTimer = setTimeout(()=>{
-        eyesClose()
-        const textToDisplay = ["I´m waiting for your wish to get me inspired",
-         "What do you want me to draw?", "Your wish is my command"]
-        activateText(textToDisplay)
-        
-    },delay)
-}
-
-let robotBlinkTimer = ""
-
-inputSection.addEventListener("keydown",function(delay){
-    robotGetsTired(robotGetsTierdDelay)
-    clearTimeout(robotBlinkTimer) 
-    eyesClose()
-    robotBlinkTimer = setTimeout(()=>{
-        eyesOpen()
-    },robotBlinkDelay)
-    
-})
-
-window.onload = function(){
-    drawInput.focus()
-    const textToDisplay = ["Welcome, I'm Art-Bot", "What do you want me to draw?", "Your wish is my command"]
-    activateText(textToDisplay)
-    robotGetsTired(robotGetsTierdOnloadDelay)
-    shuffleArray(robotComment)
-
-console.log(robotComment)   
-    
-}
-
-
-
-aboutBtn.addEventListener("click", ()=>{
-    const textToDisplay =["I´m created by Elin Molander",
-    "www.elinmolander.com", "also half of:","www.beardybird.com"]
-    activateText(textToDisplay)
-    setTimeout(()=>{
-        aiText.innerHTML =`
-        <p>I´m created by Elin Molander</p>
-        <a class="link" id="link"href="http://elinmolander.com">www.elinmolander.com </a>
-        <p>also half of:</p>
-        <a class="link"id="link" href="https://beardybird.com/">www.beardybird.com</a>`
-    },6000)
-    
-    
-})
-
-function activateText(textToDisplay){
-    aText = textToDisplay
-    iIndex = 0 
-    iArrLength = aText[0].length
-    iSpeed = 50
-    iScrollAt = 20 
-    iTextPos = 0 
-    sContents = ''
-    iRow
-    typeWriter()
-}
-
-
-
-
-function typeWriter(){
-    if(undefined){
-        console.log("undefined")
-    }
-   
-    sContents= ' '
-    iRow = Math.max(0, iIndex-iScrollAt)
-    while (iRow < iIndex){
-        sContents += aText[iRow++] + '<br />'
-    }
-    speechBubbleText.innerHTML = sContents + aText[iIndex].substring(0,iTextPos)+ "_"
-        if (iTextPos++ === iArrLength){
-            iTextPos = 0
-            iIndex++
-            if(iIndex != aText.length){
-                iArrLength = aText[iIndex].length
-                setTimeout(typeWriter,500)
-            }
-        }else{
-            setTimeout(typeWriter,iSpeed)
-        }
- }
-
- let valueInput = ""
-
-form.addEventListener("submit", function(e){
-    e.preventDefault()
-    robotGetsTired(robotGetsTierdDelay)
-    if (drawInput.value.length < 1){
-        const textToDisplay = ["That is an empty wish...",
-        " Please write something looooooooonger",
-        "Your wish is my command!"]
-        activateText(textToDisplay)
-        console.log( ` test${drawInput.value}`)
-        return
-    }
-    if (drawInput.value === valueInput){
-        const textToDisplay = ["Use your imagination human!",
-         "write something unique, no pressure.",
-        "Your wish is my command"]
-        activateText(textToDisplay)
-        return
-    }
-        
-    if(!printed){
-        valueInput = drawInput.value
-        renderCharacter()
-        printPapper()
-        printed = true
-    } else {
-        
-        removePapper()
-        setTimeout(()=>{
-            renderCharacter()
-            printPapper()
-            valueInput = drawInput.value
-        },1500)
-
-       
-    }
-})
-
-
-
-inputSection.addEventListener("focus", function(e){
-    eyesOpen()
-}, true) 
-
-inputSection.addEventListener("blur", function(e){
-    eyesClose()
-}, true) 
-
-
-
+// FILTERING VALUE INPUT
 
 function getMatchingBackgroundArray(){
     let valueInputArray = drawInput.value.toLowerCase().split(" ")
-    
-    var matchingBackgroundArray =[]
+    let matchingBackgroundArray =[]
     for (let i =0; i < valueInputArray.length;i++){
         const matchingBackground = backgroundData.filter(function(background){
             return background.keywords.includes(valueInputArray[i])
@@ -207,7 +206,7 @@ function getMatchingBackgroundArray(){
 
 function getMatchingCharactersArray(){
     const valueInputArray = drawInput.value.toLowerCase().split(" ")
-    var matchingCharactersArray = []
+    let matchingCharactersArray = []
     for (let i = 0; i < valueInputArray.length; i++){
         const matchingCharacter = charactersData.filter(function(character){
             return character.keywords.includes(valueInputArray[i])
@@ -222,7 +221,6 @@ function getMatchingCharactersArray(){
 
 function getSingelCaracter(){
     const characterArray = getMatchingCharactersArray()
-    
     if(characterArray.length > 0){
         matchingSearch = true
        return getRandomCharacter(characterArray) 
@@ -243,10 +241,10 @@ function getSingelBackground(){
 }
 
 function getRandomBackground(data){
-    var newBackgroundImage = data.map(getBackgroundImage)
+    let newBackgroundImage = data.map(getBackgroundImage)
     
     function getBackgroundImage(background){
-        var backgroundArray =[background.backgroundImage].join(" ")
+        let backgroundArray =[background.backgroundImage].join(" ")
         return backgroundArray
     }
 
@@ -255,78 +253,49 @@ function getRandomBackground(data){
     }
     return randomBackground
 }
-var counter =  0
+
 function getRandomCharacter(data){
     
-    var newHeadImage = data.map(getHeadImage)
-    var newbodyImage = data.map(getbodyImage)
-    var newfeetImage = data.map(getfeetImage)
-    var newrobotCommentIfMatch = data.map(getrobotCommentIfMatch)
-    // var newrobotComment = robotComment
-
-
+    let newHeadImage = data.map(getHeadImage)
+    let newbodyImage = data.map(getbodyImage)
+    let newfeetImage = data.map(getfeetImage)
+    let newrobotCommentIfMatch = data.map(getrobotCommentIfMatch)
+   
     function getHeadImage(head){
-        var headArray = [head.headImage].join(" ")
+        let headArray = [head.headImage].join(" ")
         return headArray
     }
 
     function getbodyImage(body){
-        var bodyArray = [body.bodyImage].join(" ")
+        let bodyArray = [body.bodyImage].join(" ")
         return bodyArray
     }
 
     function getfeetImage(feet){
-        var feetArray = [feet.feetImage].join(" ")
+        let feetArray = [feet.feetImage].join(" ")
         return feetArray
     }
 
     function getrobotCommentIfMatch(coment){
-        var comentArrayIfMatch = [coment.robotCommentIfMatch].join(" ")
+        let comentArrayIfMatch = [coment.robotCommentIfMatch].join(" ")
         return comentArrayIfMatch
     }
-   
-   
     const randomcharacter = {
         headImage: getrandomNumber(newHeadImage),
         bodyImage: getrandomNumber(newbodyImage),
         feetImage: getrandomNumber(newfeetImage),
         robotCommentIfMatch: getrandomNumber(newrobotCommentIfMatch),
-        
     }
    return randomcharacter 
 }
 
-function getNextIndexNummber(data){
-  
-    counter += 1
-    console.log(`innan if ${counter}`)
-    if ( counter >= data.length){
-        counter = 0
-    } 
-   return data[counter]
+// RENDER TEXT AND IMAGE
 
-}
-
-function getrandomNumber(data){
-    const randomNumber = Math.floor (Math.random()* data.length)
-    return data[randomNumber]
-    
-}
-
-function getRandomColornumber(data){
-   var newColor = getNextIndexNummber(data)
-   return newColor
-
-}
-
-
-function renderAiText(data){
-    var newrobotComment = robotComment
-    var aiComentObject = getSingelCaracter()
-    var robotCommentText = getNextIndexNummber(newrobotComment)
-   
+function renderAiText(){
+    let newrobotComment = robotComment
+    let aiComentObject = getSingelCaracter()
+    let robotCommentText = getNextIndexNummber(newrobotComment)
     const valueInputArray = drawInput.value
-    
     setTimeout(()=>{
         aiTextContainer.style.display = "block"
         aiTextContainer.style.transition = "opacity 1s ease-out"
@@ -334,22 +303,18 @@ function renderAiText(data){
     },500)
 if (matchingSearch){
     setTimeout(()=>{
-        // aiText.classList.add("ai-text-animation")
         const textToDisplay = [`You wanted me to draw <span>${valueInputArray}</span>,
         and here it is! ${aiComentObject.robotCommentIfMatch}`]
         activateText(textToDisplay)
         matchingSearch = false
-
     },500)
-} else{
+} else {
     setTimeout(()=>{
-        // aiText.classList.add("ai-text-animation")
         const textToDisplay = [`You wanted me to draw <span> ${valueInputArray}</span>,
         ${robotCommentText}`]
         activateText(textToDisplay)
     },500)
-
-  }
+    }
 }
 
 function renderCharacter(){
@@ -357,8 +322,7 @@ function renderCharacter(){
     const backgroundObject = getSingelBackground()
     const color = getRandomColornumber(backgroundColors)
     renderAiText()
-    console.log(color)
-
+   
     var divMask = document.createElement("div")
     divMask.id = "canvas-mask"
     divMask.className = "canvas-mask"
@@ -383,6 +347,7 @@ function renderCharacter(){
     canvas.style.transform = "translateX(-50%) translateY(-100%)"
 }    
     
+// ANIMATIONS
 
 function printPapper(){
     mouthOpen()
@@ -394,16 +359,15 @@ function printPapper(){
 
 function removePapper(){
     mouthClose()
-    canvasMask.style.transition = " transform 1s ease-out"
-    canvasMask.style.transform = "translateX(-50%) translateY(800px) rotate(360deg) scale(.5)"
+    setTimeout(()=>{
+        const variation = Math.random() * (1 - -1) + -1
+        canvasMask.style.transition = "transform 1s ease-in"
+        canvasMask.style.transform = `translateX(-50%) translateY(800px) rotate(220deg)`
+    },300)
     setTimeout(()=>{
         canvasMask.style.display ="none"
     },1500)
 }
-
-
-
-
 
 function eyesClose(){
     robotFace.innerHTML = `
@@ -434,7 +398,6 @@ function mouthOpen(){
   
     mouthUnderBackground.style.height = "5em"
     mouthUnderBackground.style.top= "-3em"
-
 }
 
 function mouthClose(){
@@ -446,36 +409,8 @@ function mouthClose(){
   
     mouthUnderBackground.style.height = "0.4em"
     mouthUnderBackground.style.top= "3em"
-
 } 
 
 
-
-
-// const aboutData = {
-//     title: "art-bot",
-//     text: "Draws arty images from your wishes",
-//     url: "https://www.elinmolander.com"
-// }
-
-
-// const resultParagraph = document.querySelector(".result")
-
-
-
-// aboutbtn.addEventListener("click", async()=>{
-//     try{
-//         await navigator.about(aboutData)
-//         resultParagraph.textContent = "art-bot aboutd successfully"
-//     } catch (err){
-//         resultParagraph.textContent = ` Error: ${err}`
-//     }
-// })
-
-
-// setTimeout(()=>{
-//     aiEyeHtml.innerHTML = `<img src="./images/Eye.png">
-//     <img src="./images/Eye.png">`
-// },1000)
 
 
