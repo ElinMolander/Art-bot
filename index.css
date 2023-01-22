@@ -84,6 +84,8 @@ meter {
 body, html {
     margin: 0;
     padding: 0;
+    height: 100%;
+    width: 100%;
 }
 body{
     background-color: #312487;
@@ -93,8 +95,9 @@ body{
 main {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    height: 100%;
+    width: 100%;
 }
 
 
@@ -103,12 +106,23 @@ main {
    %%  SECTIONS %%
 ___________________ */
 
+.start-container{
+    width: 100%;
+    height: 100%;
+    background-color: #312487;
+    position: absolute;
+    z-index: 900;
+    opacity: .7;
+    /* transform: opacity(0);
+    transition: all 3s; */
+}
     .input-section-container{
         height: 6.25em;
         width: 100vw;
         display: flex;
         justify-content: center;
         align-items: center;
+        z-index: 1000;
     }
     .input-section{
         z-index: 30;
@@ -124,24 +138,24 @@ ___________________ */
         .draw-Input{
             padding: .5em;
             z-index: 4;
-            color:#6955E7;
+            color: #4e46bc;
             right: 6.5em;
-            background-color:#fefbeb;
+            background-color: #fefbeb;
             border: none;
             border-radius: 20px;
             font-family: 'VT323', monospace;
             font-size: 1.6rem;
         }
         ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-            color: white;
+            color: #4e46bc;
             opacity: .8; /* Firefox */
             padding: .2em;
         }
         :-ms-input-placeholder { /* Internet Explorer 10-11 */
-            color: white;
+            color: #4e46bc;
         }
         ::-ms-input-placeholder { /* Microsoft Edge */
-            color: white;
+            color: #4e46bc;
         }
         .draw-Btn{
             left: 11em;
@@ -213,7 +227,7 @@ ___________________ */
         color: #ffffff;
         z-index: 950;
         font-size: 1.2rem;
-        top:-2.9em; 
+        top: 5.7em; 
         left: 50%;
         letter-spacing: .03em;
         width: 270px;
@@ -443,7 +457,6 @@ ___________________ */
         transition: all .3s;
     }
     .about-btn:hover{
-        color:#E796E5;
         transform: scale(110%);
     }
 #background-img-section{
@@ -470,37 +483,6 @@ ___________________ */
         display: none;
     }
 
-/* ___________________
-    
-  %& ANIMATION &%
-___________________ */
-
-.speech-bubble-text-p{
-    font-size: 1em;
-    color: #e8ecee;
-    overflow: hidden;
-    border-right: .15em solid orange;
-    white-space: nowrap;
-    margin: 0 auto;
-    letter-spacing: .15em;
-    animation: typing 3.5s steps(30, end), blink-caret .5s step-end infinite;
-}
-@keyframes typing{
-    from {width: 0;}
-    to{width: 100%;}
-}
-
-.ai-text-animation{
-    overflow: hidden;
-    white-space:nowrap;
-    margin: 0 auto;
-    letter-spacing: .08em;
-    animation: typing 2.5s steps(30, end), blink-caret .5s step-end infinite;
-}
-@keyframes typing {
-    from {width: 0;}
-    to{width: 100%;}
-}
 
 /* ___________________
     
@@ -550,8 +532,7 @@ ___________________ */
         background-attachment: fixed;
     }
     .robot-text-container,
-    .canvas-section,
-    .about-section{
+    .canvas-section{
         width: 80vw;
         background-color: none;
     }
@@ -571,7 +552,7 @@ ___________________ */
     height: 2em;
     }
     .robot-text{
-        top: -.2em;
+        top: 8.1em;
     }
     .body-img{
         display: flex;
@@ -594,10 +575,10 @@ ___________________ */
         height: 55vh;
     }
     .about-btn{
-        right: 3em;
-        position: fixed;
-        bottom: 92vh;
-        top: 1em;
+        left: 10em;
+        position: relative;
+        top: -26.1em;
+        z-index: 1000;
      }
     .mouth-background{
         width: 390px;

@@ -4,14 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>your personal drawer</title>
+    <title>Al the Art-bot</title>
+    <link rel="icon" href="./images/eye.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
+    <script src="https://unpkg.com/@telemetrydeck/sdk/dist/telemetrydeck.min.js" defer></script>
+    <script>
+        window.td = window.td || [];
+        td.push(['app', "A1E77D48-E802-4DCC-8515-334FC5107DF6"], ['user', "anonymous"], ['signal']);
+      </script>
 </head>
 <body>
     <main>
+        <div class="start-container" id="start-container"></div>
         <div id="input-section-container" class="input-section-container">
             <form id="formId">
                  <div id="input-section" class="input-section">
@@ -23,7 +30,6 @@
             </form>
         </div>
         <div class="robot-text-container" id="robot-text-container">
-            <button class="ai-text-btn"></button>
             <div class="robot-text" id="robot-text"></div>
         </div>
         <div class="speak-bubble-background">
@@ -63,12 +69,8 @@
             <img class="papper-back" src="./images/background-back.png" alt="#">
             <img class="background-height" src="./images/bakgrund-height.png" alt="#">
         </div>
-        <div id="about-btn-section">
-            <div id="about-section" class="about-section">
-                <button type="button" class="btn about-btn" id="about-btn"> About</button>
-                <p class="result"></p>
-            </div>
-        </div>
+        <button type="button" class="btn about-btn" id="about-btn"> About</button>
+      
     </main>
     <script src="index.js" type="module"></script>
 </body>

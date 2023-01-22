@@ -10,6 +10,9 @@ const drawInput = document.getElementById("draw-Input")
 const aboutBtn = document.getElementById("about-btn")
 const form = document.getElementById("formId")
 const inputSection = document.getElementById("input-section")
+const startOverlay = document.getElementById("start-container")
+const mouthUnder = document.getElementById("mouth-under-wraper")
+const mouthUnderBackground = document.getElementById("mouth-under-background")
 const robotGetsTierdOnloadDelay = 30000
 const robotGetsTierdDelay = 40000
 const robotBlinkDelay = 300
@@ -22,7 +25,7 @@ let robotBlinkTimer = ""
 let valueInput = ""
 let counter =  0
 // Variables to the typewriter function
-let originalPrintText = new Array("Welcome, I'm Art-Bot", "What do you want me to draw?", "Your wish is my command")
+let originalPrintText = new Array("Hi, My name is Al. The Art-Bot.", "What do you want me to draw?", "Your wish is my command")
 let printingRow = 0 
 let rowLength = originalPrintText[0].length
 let printSpeed = 50
@@ -36,7 +39,7 @@ let typeWriterTimer
 
 window.onload = function(){
     drawInput.focus()
-    const textToDisplay = ["Welcome, I'm Art-Bot", "What do you want me to draw?", "Your wish is my command"]
+    const textToDisplay = ["Hi, My name is Al, The Art-Bot.", "What do you want me to draw?", "Your wish is my command"]
     activateText(textToDisplay)
     robotGetsTired(robotGetsTierdOnloadDelay)
     shuffleArray(robotComment)
@@ -45,6 +48,7 @@ window.onload = function(){
 // ADDEVENTLISTENERS
 
 inputSection.addEventListener("keydown",function(delay){
+    startOverlayAnimation()
     robotGetsTired(robotGetsTierdDelay)
     clearTimeout(robotBlinkTimer) 
     eyesClose()
@@ -53,7 +57,15 @@ inputSection.addEventListener("keydown",function(delay){
     },robotBlinkDelay)
 })
 
-aboutBtn.addEventListener("click", ()=>{
+function startOverlayAnimation(){
+    startOverlay.style.transition = "all 3s"
+    startOverlay.style.opacity = "0"
+    setTimeout(()=>{
+        startOverlay.style.display = "none"
+    },3000)
+}
+
+aboutBtn.addEventListener("click", function(){
     const textToDisplay =["I´m created by Elin Molander",
     "www.elinmolander.com", "also half of:","www.beardybird.com"]
     activateText(textToDisplay)
@@ -68,6 +80,7 @@ aboutBtn.addEventListener("click", ()=>{
 
 form.addEventListener("submit", function(e){
     e.preventDefault()
+    drawInput.blur()
     robotGetsTired(robotGetsTierdDelay)
     if (drawInput.value.length < 1){
         const textToDisplay = ["That is an empty wish...",
@@ -99,7 +112,7 @@ form.addEventListener("submit", function(e){
 })
 
 inputSection.addEventListener("focus", function(e){
-    eyesOpen()
+   eyesOpen()
 }, true) 
 
 inputSection.addEventListener("blur", function(e){
@@ -203,7 +216,6 @@ function getMatchingBackgroundArray(){
     return matchingBackgroundArray.flat(2)
 }
 
-
 function getMatchingCharactersArray(){
     const valueInputArray = drawInput.value.toLowerCase().split(" ")
     let matchingCharactersArray = []
@@ -218,22 +230,21 @@ function getMatchingCharactersArray(){
     return matchingCharactersArray.flat(2)
 }
 
-
 function getSingelCaracter(){
     const characterArray = getMatchingCharactersArray()
     if(characterArray.length > 0){
         matchingSearch = true
-       return getRandomCharacter(characterArray) 
+        return getRandomCharacter(characterArray) 
     }
     else {
         matchingSearch = false
-       return getRandomCharacter(charactersData)
+        return getRandomCharacter(charactersData)
     }
 }
 function getSingelBackground(){
     const backgroundArray = getMatchingBackgroundArray()
     if(backgroundArray.length > 0){
-        return  getRandomBackground(backgroundArray)
+        return getRandomBackground(backgroundArray)
     }
     else{
         return getRandomBackground(backgroundData)
@@ -261,6 +272,7 @@ function getRandomCharacter(data){
     let newfeetImage = data.map(getfeetImage)
     let newrobotCommentIfMatch = data.map(getrobotCommentIfMatch)
    
+  
     function getHeadImage(head){
         let headArray = [head.headImage].join(" ")
         return headArray
@@ -390,23 +402,19 @@ function eyesOpen(){
 }
 
 function mouthOpen(){
-    const mouthUnder = document.getElementById("mouth-under-wraper")
-    const mouthUnderBackground = document.getElementById("mouth-under-background")
+    
     mouthUnder.style.transition = "top .3s ease-in"
     mouthUnder.style.top ="60px"
     mouthUnderBackground.style.transition = "height .3s  ease-in,top .3s  ease-in "
-  
     mouthUnderBackground.style.height = "5em"
     mouthUnderBackground.style.top= "-3em"
 }
 
 function mouthClose(){
-    const mouthUnder = document.getElementById("mouth-under-wraper")
-    const mouthUnderBackground = document.getElementById("mouth-under-background")
+   
     mouthUnder.style.transition = "top .3s ease-in"
     mouthUnder.style.top ="1px"
     mouthUnderBackground.style.transition = "height .3s  ease-in,top .3s  ease-in "
-  
     mouthUnderBackground.style.height = "0.4em"
     mouthUnderBackground.style.top= "3em"
 } 
