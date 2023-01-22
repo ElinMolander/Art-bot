@@ -6,8 +6,6 @@ export const charactersData = [
         feetImage: "elephant-feet.png",
         alt: "part of a Elephant",
         robotCommentIfMatch: "It's an elephant, ELEPHANT!!! Wow, so cute elephant!"
-        
-      
     },
     { 
         keywords: ["gorilla", "gorillas","animal"],
@@ -16,20 +14,14 @@ export const charactersData = [
         feetImage: "gorilla-feet.png",
         alt: "part of a Gorilla",
         robotCommentIfMatch: "Yes! More gorillas to the humans, you know you're 98% a gorilla!",
-     
-       
-      
-    },
+     },
     {
         keywords: ["fish","animal"],
         headImage: "fish-head.png",
         bodyImage: "fish-body.png",
         feetImage: "fish-feet.png",
         alt: "part of a fish",
-        robotCommentIfMatch: "Was that so hard to think of? A fish drawing on your command?",
-       
-       
-        
+        robotCommentIfMatch: "Splendid, you get a fishy fish drawing",
     },
     {
         keywords: ["carrot","veggie"],
@@ -38,8 +30,6 @@ export const charactersData = [
         feetImage: "carrot-feet.png",
         alt: "part of a carrot",
         robotCommentIfMatch: "Yummy yum, wish I could eat some!",
-       
-      
     },
     {
         keywords: ["sheep","animal"],
@@ -47,9 +37,7 @@ export const charactersData = [
         bodyImage: "sheep-body.png",
         feetImage: "sheep-feet.png",
         alt: "part of a sheep",
-        robotCommentIfMatch: "Finally a smart which, sheep is basically like robots",   
-       
-        
+        robotCommentIfMatch: "Finally a smart wish, have a fluffy sheep creature",   
     },
 ]
 

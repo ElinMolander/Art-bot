@@ -197,9 +197,6 @@ function shuffleArray(array){
     return array
 }
 
-
-
-
 // FILTERING VALUE INPUT
 
 function getMatchingBackgroundArray(){
@@ -266,7 +263,6 @@ function getRandomBackground(data){
 }
 
 function getRandomCharacter(data){
-    
     let newHeadImage = data.map(getHeadImage)
     let newbodyImage = data.map(getbodyImage)
     let newfeetImage = data.map(getfeetImage)
@@ -307,7 +303,7 @@ function renderAiText(){
     let newrobotComment = robotComment
     let aiComentObject = getSingelCaracter()
     let robotCommentText = getNextIndexNummber(newrobotComment)
-    const valueInputArray = drawInput.value
+    const valueInputArray = drawInput.value.slice(0, 8)
     setTimeout(()=>{
         aiTextContainer.style.display = "block"
         aiTextContainer.style.transition = "opacity 1s ease-out"
@@ -315,14 +311,14 @@ function renderAiText(){
     },500)
 if (matchingSearch){
     setTimeout(()=>{
-        const textToDisplay = [`You wanted me to draw <span>${valueInputArray}</span>,
+        const textToDisplay = [`You wanted me to draw <span>${valueInputArray}...</span>
         and here it is! ${aiComentObject.robotCommentIfMatch}`]
         activateText(textToDisplay)
         matchingSearch = false
     },500)
 } else {
     setTimeout(()=>{
-        const textToDisplay = [`You wanted me to draw <span> ${valueInputArray}</span>,
+        const textToDisplay = [`You wanted me to draw <span> ${valueInputArray}...</span>
         ${robotCommentText}`]
         activateText(textToDisplay)
     },500)
@@ -402,7 +398,6 @@ function eyesOpen(){
 }
 
 function mouthOpen(){
-    
     mouthUnder.style.transition = "top .3s ease-in"
     mouthUnder.style.top ="60px"
     mouthUnderBackground.style.transition = "height .3s  ease-in,top .3s  ease-in "
@@ -411,7 +406,6 @@ function mouthOpen(){
 }
 
 function mouthClose(){
-   
     mouthUnder.style.transition = "top .3s ease-in"
     mouthUnder.style.top ="1px"
     mouthUnderBackground.style.transition = "height .3s  ease-in,top .3s  ease-in "
