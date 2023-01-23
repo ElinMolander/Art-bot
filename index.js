@@ -39,8 +39,8 @@ let typeWriterTimer
 // ONLOAD
 
 window.onload = function(){
-    window.td = window.td || []
-    td.push(['app', "A1E77D48-E802-4DCC-8515-334FC5107DF6"], ['user', uuid], ['signal'])
+    td = window.td || []
+    td.push(["app", "A1E77D48-E802-4DCC-8515-334FC5107DF6"], ["user", uuid], ["signal"])
     drawInput.focus()
     const textToDisplay = ["Hi, My name is Al, The Art-Bot.", "What do you want me to draw?", "Your wish is my command"]
     activateText(textToDisplay)
