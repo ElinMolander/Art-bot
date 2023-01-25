@@ -16,7 +16,6 @@ const mouthUnderBackground = document.getElementById("mouth-under-background")
 const robotGetsTierdOnloadDelay = 30000
 const robotGetsTierdDelay = 40000
 const robotBlinkDelay = 300
-let uuid = self.crypto.randomUUID()
 let canvasMask = ""
 let canvas = ""
 let printed = false
@@ -37,9 +36,6 @@ let typeWriterTimer
 
 
 // ONLOAD
-window.td = window.td || []
-td.push(["app", "A1E77D48-E802-4DCC-8515-334FC5107DF6"], ["user", uuid], ["signal"])
-
 window.onload = function(){
     drawInput.focus()
     const textToDisplay = ["Hi, My name is Al, The Art-Bot.", "What do you want me to draw?", "Your wish is my command"]
@@ -85,7 +81,7 @@ aboutBtn.addEventListener("click", function(){
 
 form.addEventListener("submit", function(e){
     e.preventDefault()
-    td.push(["signal", { route: drawInput.value }]);
+    td.push(["signal", { keywords: drawInput.value }]);
     drawInput.blur()
     robotGetsTired(robotGetsTierdDelay)
     if (drawInput.value.length < 1){
