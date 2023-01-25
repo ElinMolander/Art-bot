@@ -39,6 +39,14 @@ export const charactersData = [
         alt: "part of a sheep",
         robotCommentIfMatch: "Finally a smart wish, have a fluffy sheep creature",   
     },
+    {
+        keywords: ["erik","hallgren"],
+        headImage: "gorilla-head.png",
+        bodyImage: "sheep-body.png",
+        feetImage: "elephant-feet.png",
+        alt: "illustrated image of Erik Hallgren",
+        robotCommentIfMatch: "I know one Erik, that is the best! and helpt bulid me! Thank you dad!",  
+    },
 ]
 
 export const robotComment = [
