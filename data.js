@@ -45,7 +45,7 @@ export const charactersData = [
         bodyImage: "sheep-body.png",
         feetImage: "elephant-feet.png",
         alt: "illustrated image of Erik Hallgren",
-        robotCommentIfMatch: "I know one Erik, that is the best! and helpt bulid me! Thank you dad!",  
+        robotCommentIfMatch: "I know one Erik, he is the best! This is him!",  
     },
 ]
 
