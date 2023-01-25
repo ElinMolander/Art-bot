@@ -475,13 +475,7 @@ ___________________ */
         display: none;
         z-index: 1;
     }
-    .background-height{
-        position: fixed;
-        bottom: 0;
-        display: none;
-    }
-
-
+  
 /* ___________________
     
 %& MEDIA QUERIES &%
