@@ -305,7 +305,7 @@ function renderAiText(){
     let newrobotComment = robotComment
     let aiComentObject = getSingelCaracter()
     let robotCommentText = getNextIndexNummber(newrobotComment)
-    const valueInputArray = drawInput.value.slice(0, 8)
+    const valueInputArray = drawInput.value.slice(0, 6)
     setTimeout(()=>{
         aiTextContainer.style.display = "block"
         aiTextContainer.style.transition = "opacity 1s ease-out"
