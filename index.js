@@ -260,7 +260,6 @@ function getSingelCaracter(){
     const characterArray = getMatchingCharactersArray()
     if(characterArray.length > 0){
         matchingSearch = true
-        console.log(getRandomCharacter(characterArray) )
         return getRandomCharacter(characterArray) 
     }
     else {
