@@ -1,6 +1,7 @@
 export const charactersData = [
     {
         keywords: ["elephant", "elephants", "animal"],
+        hatImage:"x-mas-hat-elephant.png",
         headImage: "elephant-head.png",
         bodyImage: "elephant-body.png",
         feetImage: "elephant-feet.png",
@@ -9,6 +10,7 @@ export const charactersData = [
     },
     { 
         keywords: ["gorilla", "gorillas","animal"],
+        hatImage:"x-mas-hat-gorilla.png",
         headImage: "gorilla-head.png",
         bodyImage: "gorilla-body.png",
         feetImage: "gorilla-feet.png",
@@ -17,6 +19,7 @@ export const charactersData = [
      },
     {
         keywords: ["fish","animal","fisk"],
+        hatImage:"x-mas-hat-fish.png",
         headImage: "fish-head.png",
         bodyImage: "fish-body.png",
         feetImage: "fish-feet.png",
@@ -25,6 +28,7 @@ export const charactersData = [
     },
     {
         keywords: ["carrot","veggie"],
+        hatImage:"x-mas-hat-carrot.png",
         headImage: "carrot-head.png",
         bodyImage: "carrot-body.png",
         feetImage: "carrot-feet.png",
@@ -33,6 +37,7 @@ export const charactersData = [
     },
     {
         keywords: ["sheep","animal"],
+        hatImage:"x-mas-hat-sheep.png",
         headImage: "sheep-head.png",
         bodyImage: "sheep-body.png",
         feetImage: "sheep-feet.png",
@@ -40,12 +45,31 @@ export const charactersData = [
         robotCommentIfMatch: "Finally a smart wish, have a fluffy sheep creature",   
     },
     {
+        keywords: ["cat","katt"],
+        hatImage:"x-mas-hat-cat.png",
+        headImage: "cat-head.png",
+        bodyImage: "cat-body.png",
+        feetImage: "cat-feet.png",
+        alt: "part of a sheep",
+        robotCommentIfMatch: "Yes, a creature that have between 7-9 life, cats are the best.",   
+    },
+    {
         keywords: ["erik"],
+        hatImage:"x-mas-hat-gorilla.png",
         headImage: "gorilla-head.png",
         bodyImage: "sheep-body.png",
         feetImage: "elephant-feet.png",
         alt: "illustrated image of Erik Hallgren",
         robotCommentIfMatch: "I know one Erik, he is the best! This is him!",  
+    },
+    {
+        keywords: ["jul","nordpolen","christmas","x-mas","tomte"," Santa"],
+        hatImage:"x-mas-hat-gorilla.png",
+        headImage: "gorilla-head.png",
+        bodyImage: "cat-body.png",
+        feetImage: "fish-feet.png",
+        alt: "image of Santa",
+        robotCommentIfMatch: "You better watch out! Santa is coming to town!",  
     },
 ]
 
@@ -76,7 +100,7 @@ export const backgroundData = [
         backgroundImage: "sea.png"
     },
     {
-        keywords: ["is", "antartis", "nordpolen"],
+        keywords: ["is", "antartis", "nordpolen","jul","christmas"],
         backgroundImage: "antarktis.png"
     },
     {

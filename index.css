@@ -419,6 +419,13 @@ ___________________ */
     transform: translateX(-50%);
     filter: hue-rotate(300deg) brightness(1.0);
    }
+   .hat {
+    z-index: 20;
+    position:absolute;
+    width: 75%;
+    left: 50%;
+    transform: translateX(-50%);
+   }
 .body{
     z-index: 13;
 }
@@ -426,7 +433,35 @@ ___________________ */
     z-index: 3;
     cursor: pointer;
 }
-.speak-bubble-background{
+#confetti-container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+    overflow: hidden;
+}
+.confetti {
+	position: absolute;
+	top: 0;
+	width: 2rem;
+	animation: confetti-fall linear 20s infinite;
+}
+
+@keyframes confetti-fall {
+	0% {
+		transform: translateY(-100%) rotate(0);
+       
+	}
+	100% {
+		transform: translateY(100vh) rotate(180deg);
+       
+	}
+}
+.speak-bubble-background {
     width: 100vw;
     height: 6.375em;
     display: flex;
@@ -517,7 +552,8 @@ ___________________ */
 
 @media (min-width: 700px){
     body{
-        background-image: linear-gradient(#FFC9C7, #E796E5);
+        /*  summer colors background-image: linear-gradient(#FFC9C7, #E796E5); */
+        background-image: linear-gradient(#8171ea, #E796E5);
         height: 100%;
         margin: 0;
         background-repeat: no-repeat;
