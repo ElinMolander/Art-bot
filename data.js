@@ -51,7 +51,7 @@ export const charactersData = [
         bodyImage: "cat-body.png",
         feetImage: "cat-feet.png",
         alt: "part of a sheep",
-        robotCommentIfMatch: "Yes, a creature that have between 7-9 life, cats are the best.",   
+        robotCommentIfMatch: "Yes, a creature that have between 7-9 lives, cats are the best.",   
     },
     {
         keywords: ["erik"],
@@ -63,7 +63,7 @@ export const charactersData = [
         robotCommentIfMatch: "I know one Erik, he is the best! This is him!",  
     },
     {
-        keywords: ["jul","nordpolen","christmas","x-mas","tomte"," Santa"],
+        keywords: ["jul","nordpolen","christmas","x-mas","tomte"," santa"],
         hatImage:"x-mas-hat-gorilla.png",
         headImage: "gorilla-head.png",
         bodyImage: "cat-body.png",
