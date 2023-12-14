@@ -333,6 +333,14 @@ ___________________ */
        z-index: 10;
        opacity: .5;
     }
+    .x-mas-hat-img {
+        position: absolute;
+        z-index: 100;
+        top: -16.1rem;
+        left: 45%;
+        width: 4rem;
+        display: none;
+    }
     .body-img{
         position: absolute;
         object-fit: cover;
@@ -352,7 +360,7 @@ ___________________ */
         left: 50%;
         transform: translate(-50%);
         z-index: 2;
-        display:none;
+        display: none;
         background-image: url("./images/legs.png") ;
         background-repeat: repeat-y;
         background-size: 180px;
@@ -426,6 +434,8 @@ ___________________ */
     left: 50%;
     transform: translateX(-50%);
    }
+
+  
 .body{
     z-index: 13;
 }
@@ -586,7 +596,8 @@ ___________________ */
         display: flex;
         max-width: 670px;
     }
-    .stomac-img{
+  
+    .x-mas-hat-img {
         display: none;
     }
     .papper{
@@ -598,9 +609,15 @@ ___________________ */
     .legs{
         display: inline;
     }
+    .x-mas-hat-img {
+        display: inline;
+    }
     .robot-peaces{
         width: 80vw;
         height: 55vh;
+    }
+    .stomac-img{
+        display: none;
     }
     .about-btn{
         left: 10em;
