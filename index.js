@@ -38,7 +38,7 @@ let typeWriterTimer
 // ONLOAD
 window.onload = function(){
     drawInput.focus()
-    const textToDisplay = ["Hi, My name is Al, The Art-Bot.","It´s christmas time!", "What do you want me to draw?","Your wish is my command"]
+    const textToDisplay = ["Hi, My name is Al, The Art-Bot.", "What do you want me to draw?","Your wish is my command"]
     activateText(textToDisplay)
     robotGetsTired(robotGetsTierdOnloadDelay)
     shuffleArray(robotComment)
