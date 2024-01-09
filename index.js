@@ -43,31 +43,34 @@ window.onload = function(){
     robotGetsTired(robotGetsTierdOnloadDelay)
     shuffleArray(robotComment)
 }
+// ------------------------ 
+//   Christmas setting
+// ------------------------ 
 
-const confettiContainer = document.querySelector("#confetti-container")
-function showConfetti() {
-	const confetti = document.createElement("img")
-    confetti.src = "./images/drawing-components/snowflake.png"
-	confetti.classList.add("confetti")
-    const mathrandom = Math.random() * 1000
-    confetti.style.zIndex = Math.round(mathrandom) 
-    confetti.style.animationDuration = Math.random() * 10 + 10 + "s"
+// const confettiContainer = document.querySelector("#confetti-container")
+// function showConfetti() {
+// 	const confetti = document.createElement("img")
+//     confetti.src = "./images/drawing-components/snowflake.png"
+// 	confetti.classList.add("confetti")
+//     const mathrandom = Math.random() * 1000
+//     confetti.style.zIndex = Math.round(mathrandom) 
+//     confetti.style.animationDuration = Math.random() * 10 + 10 + "s"
    
-	confetti.style.left = Math.random() * innerWidth + "px"
-	confettiContainer.appendChild(confetti)
-    setTimeout(() => {
-		confetti.remove()
-       }, 20000)
-}
+// 	confetti.style.left = Math.random() * innerWidth + "px"
+// 	confettiContainer.appendChild(confetti)
+//     setTimeout(() => {
+// 		confetti.remove()
+//        }, 20000)
+// }
 
-const confettiInterval = setInterval(() => {
-        showConfetti()
-    }, 500);
+// const confettiInterval = setInterval(() => {
+//         showConfetti()
+//     }, 500);
+
+// In render image place: 
+// <img class="hat" alt="${characterObject.alt}" src="./images/drawing-components/x-mas/${characterObject.hatImage}"> 
 
 
-// setTimeout(() => {
-//     clearInterval(confettiInterval)
-// }, 15000)
 
 // ADDEVENTLISTENERS
 
@@ -292,17 +295,18 @@ function getRandomBackground(data){
 }
 
 function getRandomCharacter(data){
-    let newHatImage = data.map(getHatImage)
+  
+//   Christmas setting
+// let newHatImage = data.map(getHatImage)
     let newHeadImage = data.map(getHeadImage)
     let newbodyImage = data.map(getbodyImage)
     let newfeetImage = data.map(getfeetImage)
     let newrobotCommentIfMatch = data.map(getrobotCommentIfMatch)
-  
-  
-    function getHatImage(hat){
-        let hatArray = [hat.hatImage].join(" ")
-        return hatArray
-    }
+//   Christmas setting
+// function getHatImage(hat){
+//     let hatArray = [hat.hatImage].join(" ")
+//     return hatArray
+// }
     function getHeadImage(head){
         let headArray = [head.headImage].join(" ")
         return headArray
@@ -326,7 +330,7 @@ function getRandomCharacter(data){
     const numHeadHat = getrandomNumberHatHead(newbodyImage)
    
     const randomcharacter = {
-        hatImage: newHatImage[numHeadHat],
+        // hatImage: newHatImage[numHeadHat],
         headImage: newHeadImage[numHeadHat],
         bodyImage: getrandomNumber(newbodyImage),
         feetImage: getrandomNumber(newfeetImage),
@@ -384,7 +388,6 @@ function renderCharacter(){
     canvasMask = divMask
     divCanvas.innerHTML = `
         <div class="canvas-color" style="background-color:${color}"> </div>
-        <img class="hat" alt="${characterObject.alt}" src="./images/drawing-components/x-mas/${characterObject.hatImage}"> 
         <img class="renderd-img" alt="${characterObject.alt}" src="./images/drawing-components/${characterObject.headImage}">
         <img class="renderd-img body" alt="${characterObject.alt}" src="./images/drawing-components/${characterObject.bodyImage}">
         <img class="renderd-img" alt="${characterObject.alt}" src="./images/drawing-components/${characterObject.feetImage}">
